@@ -1,18 +1,18 @@
 //
-//  ViewController.m
+//  FirstViewController.m
 //  Shop
 //
 //  Created by David Anderson on 4/26/16.
 //  Copyright © 2016 David Anderson. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "FirstViewController.h"
 
-@interface ViewController ()
+@interface FirstViewController ()
 
 @end
 
-@implementation ViewController
+@implementation FirstViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
