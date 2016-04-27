@@ -130,8 +130,14 @@
 
 - (void)updateCartBadge {
     NSArray *cartProducts = [AmazonProduct MR_findByAttribute:@"in_cart" withValue:[NSNumber numberWithInt:1]];
+    
+    NSString *cartBadgeString = nil;
+    if ([cartProducts count] > 0) {
+        cartBadgeString = [NSString stringWithFormat:@"%i", (int)[cartProducts count]];
+    }
+    
     [[[[[self tabBarController] tabBar] items]
-      objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%i", (int)[cartProducts count]]];
+      objectAtIndex:2] setBadgeValue:cartBadgeString];
 }
 
 - (void)didReceiveMemoryWarning {
