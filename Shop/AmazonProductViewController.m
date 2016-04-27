@@ -20,6 +20,7 @@
     [self.navigationItem setTitle:amazonProduct[@"title"]];
     [addToCartBtn addTarget:self action:@selector(cartBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
 
+    
     // Add Amazon product XIB to scrollview
     NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"AmazonProductView" owner:self options:nil];
     UIView *productView = [topLevelObjects objectAtIndex:0];
@@ -40,12 +41,10 @@
     [reviewLabel setText:amazonProduct[@"review"]];
     
     [self checkInCart];
-    // TODO Add to Cart functionality
 }
 
 - (IBAction)cartBtnPressed:(id)sender {
-    AmazonProduct *cartProduct = [AmazonProduct MR_findFirstByAttribute:@"asin"
-                                                              withValue:amazonProduct[@"asin"]];
+    AmazonProduct *cartProduct = [AmazonProduct MR_findFirstByAttribute:@"asin" withValue:amazonProduct[@"asin"]];
     
     // Create new AmazonProduct
     if (!cartProduct) {
@@ -109,11 +108,6 @@
     [self checkInCart];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)updateCartBadge {
     NSArray *cartProducts = [AmazonProduct MR_findByAttribute:@"in_cart" withValue:[NSNumber numberWithInt:1]];
     
@@ -126,14 +120,9 @@
       objectAtIndex:2] setBadgeValue:cartBadgeString];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
-*/
 
 @end

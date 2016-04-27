@@ -10,17 +10,16 @@
 #import <CommonCrypto/CommonHMAC.h>
 #import <XMLDictionary/XMLDictionary.h>
 
-
 static NSString *AWS_ACCESS_KEY = @"AKIAJQDFUCVUAUN4QDKA";
 static NSString *AWS_SECRET_KEY = @"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";
 static NSString *ASSOCIATE_TAG = @"whialaclo-20";
 static NSString *ENDPOINT = @"webservices.amazon.com";
 static NSString *URI = @"/onca/xml";
 
-
 @implementation AmazonProductsAPI
 
 @synthesize delegate, currentOperation;
+
 
 /**
  Get the shared Instance of the AmazonProductsAPI
@@ -36,6 +35,10 @@ static NSString *URI = @"/onca/xml";
 }
 
 
+/**
+ Fetch products from Amazon (search for 'Feature')
+ @param searchIndex NSString of product category
+ */
 - (void)fetchAllProductsWithSearchIndex:(NSString *)searchIndex {
     searchIndex = [searchIndex stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSDictionary *requestParams = @{@"Keywords":@"Feature", @"SearchIndex":searchIndex};
@@ -43,6 +46,12 @@ static NSString *URI = @"/onca/xml";
     [self requestWithParams:requestParams];
 }
 
+
+/**
+ Search for products from Amazon
+ @param q NSString of search query
+ @param searchIndex NSString of product category
+ */
 - (void)searchProducts:(NSString *)q withSearchIndex:(NSString *)searchIndex {
     searchIndex = [searchIndex stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSDictionary *requestParams = @{@"Keywords":q, @"SearchIndex":searchIndex};
@@ -50,9 +59,10 @@ static NSString *URI = @"/onca/xml";
     [self requestWithParams:requestParams];
 }
 
+
 /**
- Request products from Amazon
- @param requestParams NSDictionary of Amazon response
+ Parses the XML Dictionary into a more simple NSDictionary
+ @param responseDict NSDictionary of Amazon response
  @return NSArray contains Amazon products data
  */
 - (NSArray *)parseResponse:(NSDictionary *)responseDict {
