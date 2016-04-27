@@ -41,11 +41,12 @@
                     <connections>
                         <outlet property="productsTableView" destination="0K2-KU-H0D" id="ZzF-qa-Wj3"/>
                         <outlet property="searchBar" destination="J0G-hI-G5E" id="wXh-Ik-xV6"/>
+                        <segue destination="bic-uS-Key" kind="show" identifier="ProductSegue" id="a3o-fD-XY4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1562" y="-320"/>
+            <point key="canvasLocation" x="1474" y="-320"/>
         </scene>
         <!--Categories-->
         <scene sceneID="wg7-f3-ORb">
@@ -59,33 +60,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="195" y="279" width="209.5" height="41.5"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="khg-MK-kaJ">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="192" y="329" width="215.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
+                            <constraint firstAttribute="trailing" secondItem="khg-MK-kaJ" secondAttribute="trailing" id="7HW-Px-rfN"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="khg-MK-kaJ" secondAttribute="bottom" id="93z-bP-UiU"/>
+                            <constraint firstItem="khg-MK-kaJ" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="I1y-ID-K8M"/>
+                            <constraint firstItem="khg-MK-kaJ" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="dhn-IP-sb6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="s9g-Xz-gwy"/>
+                    <connections>
+                        <segue destination="2S2-7F-VZ8" kind="show" identifier="CategorySegue" id="g1o-tU-dTA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1562" y="360"/>
+            <point key="canvasLocation" x="1474" y="360"/>
+        </scene>
+        <!--Product-->
+        <scene sceneID="YNR-fE-xGC">
+            <objects>
+                <viewController id="bic-uS-Key" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eoM-XW-7AN"/>
+                        <viewControllerLayoutGuide type="bottom" id="B1h-TI-MKX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6d6-CR-GD0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diO-LN-ffx">
+                                <rect key="frame" x="0.0" y="495" width="600" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="Trs-T6-aXK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                <state key="normal" title="Add to Cart" backgroundImage="green.png"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="diO-LN-ffx" firstAttribute="leading" secondItem="6d6-CR-GD0" secondAttribute="leading" id="1p5-Eq-Jlv"/>
+                            <constraint firstAttribute="trailing" secondItem="diO-LN-ffx" secondAttribute="trailing" id="gYD-10-XSd"/>
+                            <constraint firstItem="B1h-TI-MKX" firstAttribute="top" secondItem="diO-LN-ffx" secondAttribute="bottom" id="sBR-mt-Gc6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Product" id="jgR-yw-kU3">
+                        <barButtonItem key="backBarButtonItem" title=" " id="wZB-2Q-66W"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iqc-Xr-qC6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2209" y="-320"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -156,14 +187,40 @@
                     <view key="view" contentMode="scaleToFill" id="j02-P5-1pa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsq-Rj-KVR">
+                                <rect key="frame" x="0.0" y="495" width="600" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="LoH-93-5co"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                <state key="normal" title="Empty Cart" backgroundImage="red.png"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f2e-dh-iMd">
+                                <rect key="frame" x="0.0" y="64" width="600" height="431"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f2e-dh-iMd" firstAttribute="top" secondItem="tg8-Bw-mjH" secondAttribute="bottom" id="JLM-QY-3PD"/>
+                            <constraint firstItem="f2e-dh-iMd" firstAttribute="leading" secondItem="j02-P5-1pa" secondAttribute="leading" id="K58-a1-Xk8"/>
+                            <constraint firstAttribute="trailing" secondItem="f2e-dh-iMd" secondAttribute="trailing" id="SCh-Ou-UJA"/>
+                            <constraint firstAttribute="trailing" secondItem="Hsq-Rj-KVR" secondAttribute="trailing" id="YMj-Q8-fuZ"/>
+                            <constraint firstItem="jjp-Yo-JBB" firstAttribute="top" secondItem="Hsq-Rj-KVR" secondAttribute="bottom" id="YSr-hk-d0V"/>
+                            <constraint firstItem="Hsq-Rj-KVR" firstAttribute="leading" secondItem="j02-P5-1pa" secondAttribute="leading" id="bUv-3N-xFa"/>
+                            <constraint firstItem="Hsq-Rj-KVR" firstAttribute="top" secondItem="f2e-dh-iMd" secondAttribute="bottom" id="kBk-Cv-UzU"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Cart" id="FHA-V3-i2G"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="bic-uS-Key" kind="show" identifier="ProductSegue" id="Xrd-EL-WWc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1qA-0W-WMk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1457" y="1329"/>
+            <point key="canvasLocation" x="1474" y="1069"/>
         </scene>
         <!--Cart-->
         <scene sceneID="2f5-9A-ejh">
@@ -182,12 +239,60 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fv0-1W-Iff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="593" y="1329"/>
+            <point key="canvasLocation" x="750" y="1069"/>
+        </scene>
+        <!--Category-->
+        <scene sceneID="Bis-NW-2kG">
+            <objects>
+                <viewController id="2S2-7F-VZ8" userLabel="Category" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Tg-Tu-Mhd"/>
+                        <viewControllerLayoutGuide type="bottom" id="dkz-hd-Yvn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fOA-Il-Q0L">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search for products" translatesAutoresizingMaskIntoConstraints="NO" id="r6q-Y0-m6M">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YpZ-xs-cbl">
+                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YpZ-xs-cbl" firstAttribute="leading" secondItem="fOA-Il-Q0L" secondAttribute="leading" id="49Q-U3-fca"/>
+                            <constraint firstItem="dkz-hd-Yvn" firstAttribute="top" secondItem="YpZ-xs-cbl" secondAttribute="bottom" id="963-UG-o8C"/>
+                            <constraint firstItem="r6q-Y0-m6M" firstAttribute="leading" secondItem="fOA-Il-Q0L" secondAttribute="leading" id="Q8L-7K-bdI"/>
+                            <constraint firstAttribute="trailing" secondItem="r6q-Y0-m6M" secondAttribute="trailing" id="VVx-vj-1i9"/>
+                            <constraint firstItem="YpZ-xs-cbl" firstAttribute="top" secondItem="r6q-Y0-m6M" secondAttribute="bottom" id="acE-dZ-3Mb"/>
+                            <constraint firstItem="r6q-Y0-m6M" firstAttribute="top" secondItem="2Tg-Tu-Mhd" secondAttribute="bottom" id="bME-dl-NZ2"/>
+                            <constraint firstAttribute="trailing" secondItem="YpZ-xs-cbl" secondAttribute="trailing" id="qX4-YP-ETw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Category" id="zot-FU-el5"/>
+                    <connections>
+                        <outlet property="productsTableView" destination="YpZ-xs-cbl" id="rMG-Ru-QTz"/>
+                        <outlet property="searchBar" destination="r6q-Y0-m6M" id="xUF-HT-drq"/>
+                        <segue destination="bic-uS-Key" kind="show" identifier="ProductSegue" id="Gum-G3-iQd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eAn-sZ-ahd" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2209" y="360"/>
         </scene>
     </scenes>
     <resources>
         <image name="cart.png" width="24" height="24"/>
+        <image name="green.png" width="32" height="32"/>
         <image name="home.png" width="24" height="24"/>
         <image name="lists.png" width="24" height="24"/>
+        <image name="red.png" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Xrd-EL-WWc"/>
+    </inferredMetricsTieBreakers>
 </document>

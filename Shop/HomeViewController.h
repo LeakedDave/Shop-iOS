@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AmazonProductsAPI.h"
 
 @interface HomeViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, AmazonProductsAPIDelegate, UISearchBarDelegate, UITextFieldDelegate>
 

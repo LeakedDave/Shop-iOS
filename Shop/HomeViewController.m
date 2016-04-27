@@ -7,11 +7,6 @@
 //
 
 #import "HomeViewController.h"
-#import <AFNetworking/UIImageView+AFNetworking.h>
-
-@interface HomeViewController ()
-
-@end
 
 @implementation HomeViewController
 
