@@ -65,6 +65,8 @@ static NSString *URI = @"/onca/xml";
  @param requestParams NSDictionary with additional parameters
  */
 - (void)requestWithParams:(NSDictionary *)requestParams {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
     // Cancel current operation
     if (currentOperation != nil) {
         [currentOperation cancel];
@@ -95,8 +97,11 @@ static NSString *URI = @"/onca/xml";
         if (delegate != nil) {
             [delegate fetchedAmazonProducts:amazonProducts];
         }
+        
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     } failure:^(NSError *error) {
         NSLog(@"%@",[error localizedDescription]);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     }];
 }
 
