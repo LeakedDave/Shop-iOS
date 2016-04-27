@@ -61,20 +61,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="khg-MK-kaJ">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="khg-MK-kaJ" secondAttribute="trailing" id="7HW-Px-rfN"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="khg-MK-kaJ" secondAttribute="bottom" id="93z-bP-UiU"/>
-                            <constraint firstItem="khg-MK-kaJ" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="I1y-ID-K8M"/>
-                            <constraint firstItem="khg-MK-kaJ" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="dhn-IP-sb6"/>
+                            <constraint firstItem="khg-MK-kaJ" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="Jg4-Ct-npN"/>
+                            <constraint firstAttribute="bottom" secondItem="khg-MK-kaJ" secondAttribute="bottom" id="MCg-aJ-w02"/>
+                            <constraint firstItem="khg-MK-kaJ" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="oWr-Ho-cK9"/>
+                            <constraint firstAttribute="trailing" secondItem="khg-MK-kaJ" secondAttribute="trailing" id="vPv-YX-nKq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="s9g-Xz-gwy"/>
                     <connections>
+                        <outlet property="categoriesTableView" destination="khg-MK-kaJ" id="JDu-Sv-eV8"/>
                         <segue destination="2S2-7F-VZ8" kind="show" identifier="CategorySegue" id="g1o-tU-dTA"/>
                     </connections>
                 </viewController>
@@ -102,12 +103,19 @@
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                 <state key="normal" title="Add to Cart" backgroundImage="green.png"/>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9o-SD-LWh">
+                                <rect key="frame" x="0.0" y="64" width="600" height="431"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="diO-LN-ffx" firstAttribute="leading" secondItem="6d6-CR-GD0" secondAttribute="leading" id="1p5-Eq-Jlv"/>
+                            <constraint firstItem="diO-LN-ffx" firstAttribute="top" secondItem="T9o-SD-LWh" secondAttribute="bottom" id="4g3-dP-acZ"/>
                             <constraint firstAttribute="trailing" secondItem="diO-LN-ffx" secondAttribute="trailing" id="gYD-10-XSd"/>
+                            <constraint firstItem="T9o-SD-LWh" firstAttribute="leading" secondItem="6d6-CR-GD0" secondAttribute="leading" id="jYp-am-LPL"/>
+                            <constraint firstAttribute="trailing" secondItem="T9o-SD-LWh" secondAttribute="trailing" id="rnb-mf-f1S"/>
                             <constraint firstItem="B1h-TI-MKX" firstAttribute="top" secondItem="diO-LN-ffx" secondAttribute="bottom" id="sBR-mt-Gc6"/>
+                            <constraint firstItem="T9o-SD-LWh" firstAttribute="top" secondItem="eoM-XW-7AN" secondAttribute="bottom" id="w7D-0U-hAJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Product" id="jgR-yw-kU3">
@@ -293,6 +301,6 @@
         <image name="red.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Xrd-EL-WWc"/>
+        <segue reference="Gum-G3-iQd"/>
     </inferredMetricsTieBreakers>
 </document>

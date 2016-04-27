@@ -10,10 +10,7 @@
 
 @implementation HomeViewController
 
-@synthesize searchBar, productsTableView;
-
-NSArray *tableData;
-
+@synthesize searchBar, productsTableView, tableData;
 
 /**
  Prepare the ViewController and fetch initial Amazon products

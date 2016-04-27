@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UITableView *productsTableView;
+@property (strong, nonatomic) NSArray *tableData;
 
 @end
 
