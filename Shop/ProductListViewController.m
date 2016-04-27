@@ -45,6 +45,8 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
+    
+    [self updateCartBadge];
 }
 
 
@@ -143,6 +145,12 @@
 
 - (void)dismissKeyboard {
     [self.view endEditing:YES];
+}
+
+- (void)updateCartBadge {
+    NSArray *cartProducts = [AmazonProduct MR_findByAttribute:@"in_cart" withValue:[NSNumber numberWithInt:1]];
+    [[[[[self tabBarController] tabBar] items]
+      objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%i", (int)[cartProducts count]]];
 }
 
 - (void)didReceiveMemoryWarning {

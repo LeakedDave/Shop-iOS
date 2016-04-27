@@ -53,6 +53,8 @@
     }
     
     [cartTableView reloadData];
+    
+    [self updateCartBadge];
 }
 
 
@@ -124,6 +126,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 80.0f;
+}
+
+- (void)updateCartBadge {
+    NSArray *cartProducts = [AmazonProduct MR_findByAttribute:@"in_cart" withValue:[NSNumber numberWithInt:1]];
+    [[[[[self tabBarController] tabBar] items]
+      objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%i", (int)[cartProducts count]]];
 }
 
 - (void)didReceiveMemoryWarning {

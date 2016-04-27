@@ -83,6 +83,8 @@
         [addToCartBtn setBackgroundImage:[UIImage imageNamed:@"green"] forState:UIControlStateNormal];
         [addToCartBtn setTitle:@"Add to Cart" forState:UIControlStateNormal];
     }
+    
+    [self updateCartBadge];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -110,6 +112,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)updateCartBadge {
+    NSArray *cartProducts = [AmazonProduct MR_findByAttribute:@"in_cart" withValue:[NSNumber numberWithInt:1]];
+    [[[[[self tabBarController] tabBar] items]
+      objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%i", (int)[cartProducts count]]];
 }
 
 /*
