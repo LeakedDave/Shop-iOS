@@ -38,7 +38,14 @@
     [titleLabel setText:amazonProduct[@"title"]];
     [brandLabel setText:[NSString stringWithFormat:@"by %@", amazonProduct[@"brand"]]];
     [priceLabel setText:amazonProduct[@"price"]];
-    [reviewLabel setText:amazonProduct[@"review"]];
+    
+    
+    // Handle HTML reviews
+    NSString *htmlString = [NSString stringWithFormat:@"<span style=\"font-family: HelveticaNeue-Light; font-size: 15\">%@</span>", amazonProduct[@"review"]];
+
+    NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+
+    [reviewLabel setAttributedText:attrStr];
     
     [self checkInCart];
 }
