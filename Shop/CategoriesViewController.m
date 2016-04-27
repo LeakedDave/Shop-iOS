@@ -53,6 +53,8 @@
     // Set delegates
     [categoriesTableView setDelegate:self];
     [categoriesTableView setDataSource:self];
+    categoriesTableView.tableFooterView = [[UIView alloc] init];
+
 }
 
 

@@ -34,7 +34,8 @@
     [searchBar setDelegate:self];
     [productsTableView setDelegate:self];
     [productsTableView setDataSource:self];
-    
+    productsTableView.tableFooterView = [[UIView alloc] init];
+
     
     // Fetch Amazon products
     [[AmazonProductsAPI sharedInstance] setDelegate:self];

@@ -21,6 +21,7 @@
     // Setup delegates
     [cartTableView setDelegate:self];
     [cartTableView setDataSource:self];
+    cartTableView.tableFooterView = [[UIView alloc] init];
     
     [emptyCartBtn addTarget:self action:@selector(emptyCart:) forControlEvents:UIControlEventTouchUpInside];
 }
