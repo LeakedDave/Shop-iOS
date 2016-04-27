@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AmazonProductsAPI.h"
 
-@interface HomeViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface HomeViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, AmazonProductsAPIDelegate, UISearchBarDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UITableView *productsTableView;

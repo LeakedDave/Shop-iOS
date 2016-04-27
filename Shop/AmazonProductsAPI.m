@@ -7,7 +7,6 @@
 //
 
 #import "AmazonProductsAPI.h"
-#import "RWMAmazonProductAdvertisingManager.h"
 #import <CommonCrypto/CommonHMAC.h>
 #import <XMLDictionary/XMLDictionary.h>
 
@@ -21,7 +20,7 @@ static NSString *URI = @"/onca/xml";
 
 @implementation AmazonProductsAPI
 
-static AFHTTPRequestOperation *currentOperation = nil;
+@synthesize delegate, currentOperation;
 
 /**
  Get the shared Instance of the AmazonProductsAPI
@@ -91,6 +90,7 @@ static AFHTTPRequestOperation *currentOperation = nil;
             NSMutableDictionary *amazonProduct = [[NSMutableDictionary alloc] init];
             amazonProduct[@"asin"] = [NSNumber numberWithInt:[[item objectForKey:@"ASIN"] intValue]];
             amazonProduct[@"title"] = [itemAttributes objectForKey:@"Title"];
+            amazonProduct[@"brand"] = [itemAttributes objectForKey:@"Brand"];
             amazonProduct[@"price"] = [[[item objectForKey:@"OfferSummary"] objectForKey:@"LowestNewPrice"] objectForKey:@"FormattedPrice"];
             
             
@@ -148,7 +148,9 @@ static AFHTTPRequestOperation *currentOperation = nil;
         // Parse the response Dictionary into a more simplified Dictionary
         NSArray *amazonProducts = [self parseResponse:responseDict];
         
-        // TODO notify delegate
+        if (delegate != nil) {
+            [delegate fetchedAmazonProducts:amazonProducts];
+        }
     } failure:^(NSError *error) {
         NSLog(@"%@",[error localizedDescription]);
     }];

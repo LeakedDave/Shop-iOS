@@ -7,10 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RWMAmazonProductAdvertisingManager.h"
+
+@protocol AmazonProductsAPIDelegate <NSObject>
+
+- (void)fetchedAmazonProducts:(NSArray *) amazonProducts;
+
+@end
 
 @interface AmazonProductsAPI : NSObject<NSXMLParserDelegate>
 
+@property (nonatomic, strong) id <AmazonProductsAPIDelegate> delegate;
+@property (nonatomic, strong) AFHTTPRequestOperation *currentOperation;
+
 + (AmazonProductsAPI *)sharedInstance;
 - (void)fetchAllProducts;
+
 
 @end
