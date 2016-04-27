@@ -178,7 +178,11 @@ static NSString *URI = @"/onca/xml";
             }
             
             if ([item objectForKey:@"EditorialReviews"] && [[item objectForKey:@"EditorialReviews"] objectForKey:@"EditorialReview"]) {
-                amazonProduct[@"review"] = [[[item objectForKey:@"EditorialReviews"] objectForKey:@"EditorialReview"] objectForKey:@"Content"];
+                if ([[[item objectForKey:@"EditorialReviews"] objectForKey:@"EditorialReview"] respondsToSelector:@selector(objectForKey:)]) {
+                    amazonProduct[@"review"] = [[[item objectForKey:@"EditorialReviews"] objectForKey:@"EditorialReview"] objectForKey:@"Content"];
+                } else {
+                    amazonProduct[@"review"] = [[[[item objectForKey:@"EditorialReviews"] objectForKey:@"EditorialReview"] objectAtIndex:0] objectForKey:@"Content"];
+                }
             } else {
                 amazonProduct[@"review"] = [itemAttributes objectForKey:@"title"];
             }
