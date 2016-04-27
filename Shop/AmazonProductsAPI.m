@@ -61,6 +61,47 @@ static NSString *URI = @"/onca/xml";
 
 
 /**
+ Request products from Amazon
+ @param requestParams NSDictionary with additional parameters
+ */
+- (void)requestWithParams:(NSDictionary *)requestParams {
+    // Cancel current operation
+    if (currentOperation != nil) {
+        [currentOperation cancel];
+    }
+    
+    // Prepare parameters
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    params[@"Service"] = @"AWSECommerceService";
+    params[@"Operation"] = @"ItemSearch";
+    params[@"AssociateTag"] = ASSOCIATE_TAG;
+    params[@"SearchIndex"] = @"All";
+    params[@"ResponseGroup"] = @"Images,ItemAttributes,Offers,EditorialReview";
+    for (NSString *key in requestParams) {
+        params[key] = [requestParams objectForKey:key];
+    }
+    
+    // Fetch products from Amazon
+    RWMAmazonProductAdvertisingManager *manager = [[RWMAmazonProductAdvertisingManager alloc] initWithAccessKeyID:AWS_ACCESS_KEY secret:AWS_SECRET_KEY];
+    manager.responseSerializer = [AFXMLParserResponseSerializer serializer];
+    
+    currentOperation = [manager enqueueRequestOperationWithMethod:@"GET" parameters:[params copy] success:^(id responseObject) {
+        // Parse the XML Response into a Dictionary
+        NSDictionary *responseDict = [[[XMLDictionaryParser alloc] init] dictionaryWithParser:responseObject];
+        
+        // Parse the response Dictionary into a more simplified Dictionary
+        NSArray *amazonProducts = [self parseResponse:responseDict];
+        
+        if (delegate != nil) {
+            [delegate fetchedAmazonProducts:amazonProducts];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@",[error localizedDescription]);
+    }];
+}
+
+
+/**
  Parses the XML Dictionary into a more simple NSDictionary
  @param responseDict NSDictionary of Amazon response
  @return NSArray contains Amazon products data
@@ -148,46 +189,6 @@ static NSString *URI = @"/onca/xml";
     }
     
     return responseArray;
-}
-
-/**
- Request products from Amazon
- @param requestParams NSDictionary with additional parameters
- */
-- (void)requestWithParams:(NSDictionary *)requestParams {
-    // Cancel current operation
-    if (currentOperation != nil) {
-        [currentOperation cancel];
-    }
-    
-    // Prepare parameters
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    params[@"Service"] = @"AWSECommerceService";
-    params[@"Operation"] = @"ItemSearch";
-    params[@"AssociateTag"] = ASSOCIATE_TAG;
-    params[@"SearchIndex"] = @"All";
-    params[@"ResponseGroup"] = @"Images,ItemAttributes,Offers,EditorialReview";
-    for (NSString *key in requestParams) {
-        params[key] = [requestParams objectForKey:key];
-    }
-    
-    // Fetch products from Amazon
-    RWMAmazonProductAdvertisingManager *manager = [[RWMAmazonProductAdvertisingManager alloc] initWithAccessKeyID:AWS_ACCESS_KEY secret:AWS_SECRET_KEY];
-    manager.responseSerializer = [AFXMLParserResponseSerializer serializer];
-    
-    currentOperation = [manager enqueueRequestOperationWithMethod:@"GET" parameters:[params copy] success:^(id responseObject) {
-        // Parse the XML Response into a Dictionary
-        NSDictionary *responseDict = [[[XMLDictionaryParser alloc] init] dictionaryWithParser:responseObject];
-        
-        // Parse the response Dictionary into a more simplified Dictionary
-        NSArray *amazonProducts = [self parseResponse:responseDict];
-        
-        if (delegate != nil) {
-            [delegate fetchedAmazonProducts:amazonProducts];
-        }
-    } failure:^(NSError *error) {
-        NSLog(@"%@",[error localizedDescription]);
-    }];
 }
 
 @end
