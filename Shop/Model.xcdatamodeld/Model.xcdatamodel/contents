@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="AmazonProduct" syncable="YES">
+        <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="in_cart" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="isbn" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="large_image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="medium_image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="review" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="small_image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AmazonProduct" positionX="-63" positionY="-18" width="128" height="180"/>
+    </elements>
+</model>
