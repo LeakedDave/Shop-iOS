@@ -7,26 +7,34 @@
 //
 
 #import "ProductListViewController.h"
+#import "AmazonProductViewController.h"
 
 @implementation ProductListViewController
 
-@synthesize searchBar, productsTableView, tableData, searchIndex;
+@synthesize searchBar, productsTableView, tableData, searchIndex, selectedIndex;
 
 /**
  Prepare the ViewController and fetch initial Amazon products
  */
 - (void)viewDidLoad {
     [super viewDidLoad];
+    tableData = [[NSArray alloc] init];
+
+    
+    // Update search index based on category
     if (searchIndex == nil) {
         searchIndex = @"All";
+    } else {
+        // Set the navigation title to the category name
+        [self.navigationItem setTitle:searchIndex];
     }
-    
-    tableData = [[NSArray alloc] init];
+
     
     // Set delegates
     [searchBar setDelegate:self];
     [productsTableView setDelegate:self];
     [productsTableView setDataSource:self];
+    
     
     // Fetch Amazon products
     [[AmazonProductsAPI sharedInstance] setDelegate:self];
@@ -34,9 +42,7 @@
 
     
     // Dismiss keyboard on tap
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(dismissKeyboard)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
 }
@@ -100,7 +106,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    // TODO go to product page
+    // Go to Product controller
+    selectedIndex = (int) indexPath.row;
+    [self performSegueWithIdentifier:@"ProductSegue" sender:self];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Set the Product data for the destination controller
+    AmazonProductViewController *viewController = segue.destinationViewController;
+    [viewController setAmazonProduct:[tableData objectAtIndex:selectedIndex]];
 }
 
 

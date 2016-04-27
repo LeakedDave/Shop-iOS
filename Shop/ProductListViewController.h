@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *productsTableView;
 @property (strong, nonatomic) NSArray *tableData;
 @property (strong, nonatomic) NSString *searchIndex;
+@property (nonatomic) int selectedIndex;
 
 @end
 

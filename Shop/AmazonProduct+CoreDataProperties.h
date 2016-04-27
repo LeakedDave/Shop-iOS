@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AmazonProduct (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *title;
-@property (nullable, nonatomic, retain) NSNumber *asin;
+@property (nullable, nonatomic, retain) NSString *asin;
 @property (nullable, nonatomic, retain) NSString *brand;
 @property (nullable, nonatomic, retain) NSString *small_image;
 @property (nullable, nonatomic, retain) NSString *medium_image;

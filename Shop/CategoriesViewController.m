@@ -13,9 +13,11 @@
 
 @synthesize categoriesTableView, selectedIndex, tableData;
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    // Preset category data
     tableData = @[@"Appliances",
                   @"Arts and Crafts",
                   @"Automotive",
@@ -47,14 +49,17 @@
                   @"Wine",
                   @"Wireless"];
     
+    
     // Set delegates
     [categoriesTableView setDelegate:self];
     [categoriesTableView setDataSource:self];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CategoryCell"];
     
+    // Set category label text
     [[cell textLabel] setText:[tableData objectAtIndex:indexPath.row]];
     
     return cell;
@@ -69,10 +74,13 @@
     [self performSegueWithIdentifier:@"CategorySegue" sender:self];
 }
 
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Set the Category for the destination controller
     ProductListViewController *viewController = segue.destinationViewController;
     [viewController setSearchIndex:[tableData objectAtIndex:selectedIndex]];
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [tableData count];

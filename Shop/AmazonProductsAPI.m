@@ -38,7 +38,7 @@ static NSString *URI = @"/onca/xml";
 
 - (void)fetchAllProductsWithSearchIndex:(NSString *)searchIndex {
     searchIndex = [searchIndex stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSDictionary *requestParams = @{@"Keywords":@"Featured", @"SearchIndex":searchIndex};
+    NSDictionary *requestParams = @{@"Keywords":@"Feature", @"SearchIndex":searchIndex};
     
     [self requestWithParams:requestParams];
 }
@@ -63,6 +63,10 @@ static NSString *URI = @"/onca/xml";
         
         for (NSDictionary *item in items) {
             // Skip entries that are missing important attributes
+            if (![item respondsToSelector:@selector(objectForKey:)]) {
+                continue;
+            }
+            
             if (![item objectForKey:@"ASIN"]) {
                 continue;
             }
@@ -71,7 +75,11 @@ static NSString *URI = @"/onca/xml";
                 continue;
             }
             
-            NSDictionary *itemAttributes = [item objectForKey:@"ItemAttributes"];
+            id itemAttributes = [item objectForKey:@"ItemAttributes"];
+            
+            if (![itemAttributes respondsToSelector:@selector(objectForKey:)]) {
+                continue;
+            }
             
             if (![itemAttributes objectForKey:@"Title"]) {
                 continue;
@@ -83,14 +91,23 @@ static NSString *URI = @"/onca/xml";
             
             
             // Make sure there is a lowest new price
-            if (![item objectForKey:@"OfferSummary"] || ![[item objectForKey:@"OfferSummary"] objectForKey:@"LowestNewPrice"] || ![[[item objectForKey:@"OfferSummary"] objectForKey:@"LowestNewPrice"] objectForKey:@"FormattedPrice"]) {
+            if (![item objectForKey:@"OfferSummary"]) {
+                continue;
+            }
+            
+            id offerSummary = [item objectForKey:@"OfferSummary"];
+            if (![offerSummary respondsToSelector:@selector(objectForKey:)]) {
+                continue;
+            }
+            
+            if (![offerSummary objectForKey:@"LowestNewPrice"] || ![[offerSummary objectForKey:@"LowestNewPrice"] objectForKey:@"FormattedPrice"]) {
                 continue;
             }
             
             
             // Setup Amazon product Dictionary
             NSMutableDictionary *amazonProduct = [[NSMutableDictionary alloc] init];
-            amazonProduct[@"asin"] = [NSNumber numberWithInt:[[item objectForKey:@"ASIN"] intValue]];
+            amazonProduct[@"asin"] = [item objectForKey:@"ASIN"];
             amazonProduct[@"title"] = [itemAttributes objectForKey:@"Title"];
             amazonProduct[@"brand"] = [itemAttributes objectForKey:@"Brand"];
             amazonProduct[@"price"] = [[[item objectForKey:@"OfferSummary"] objectForKey:@"LowestNewPrice"] objectForKey:@"FormattedPrice"];
@@ -109,6 +126,11 @@ static NSString *URI = @"/onca/xml";
                 amazonProduct[@"large_image"] = [[item objectForKey:@"LargeImage"] objectForKey:@"URL"];
             }
             
+            if ([item objectForKey:@"EditorialReviews"] && [[item objectForKey:@"EditorialReviews"] objectForKey:@"EditorialReview"]) {
+                amazonProduct[@"review"] = [[[item objectForKey:@"EditorialReviews"] objectForKey:@"EditorialReview"] objectForKey:@"Content"];
+            } else {
+                amazonProduct[@"review"] = [itemAttributes objectForKey:@"title"];
+            }
             
             [responseArray addObject:amazonProduct];
         }

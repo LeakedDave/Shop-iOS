@@ -28,6 +28,8 @@
 		6383D4821CD09FDD00B53BCE /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 6383D4801CD09FDD00B53BCE /* green.png */; };
 		6383D4831CD09FDD00B53BCE /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 6383D4811CD09FDD00B53BCE /* red.png */; };
 		6383D4851CD0A34B00B53BCE /* AmazonProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6383D4841CD0A34B00B53BCE /* AmazonProductView.xib */; };
+		6383D4881CD1527300B53BCE /* AmazonProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383D4871CD1527300B53BCE /* AmazonProductViewController.m */; };
+		6383D48B1CD1671300B53BCE /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383D48A1CD1671300B53BCE /* CartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,10 @@
 		6383D4801CD09FDD00B53BCE /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
 		6383D4811CD09FDD00B53BCE /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
 		6383D4841CD0A34B00B53BCE /* AmazonProductView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AmazonProductView.xib; sourceTree = "<group>"; };
+		6383D4861CD1527300B53BCE /* AmazonProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonProductViewController.h; sourceTree = "<group>"; };
+		6383D4871CD1527300B53BCE /* AmazonProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonProductViewController.m; sourceTree = "<group>"; };
+		6383D4891CD1671300B53BCE /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
+		6383D48A1CD1671300B53BCE /* CartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
 		7D0B936EDA3888460D411DD8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D2693709FF7E802B9FE9EBB9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -118,6 +124,10 @@
 				63373F001CCFDF0500DB0A2E /* ProductListViewController.m */,
 				63373F021CCFDF0500DB0A2E /* CategoriesViewController.h */,
 				63373F031CCFDF0500DB0A2E /* CategoriesViewController.m */,
+				6383D4861CD1527300B53BCE /* AmazonProductViewController.h */,
+				6383D4871CD1527300B53BCE /* AmazonProductViewController.m */,
+				6383D4891CD1671300B53BCE /* CartViewController.h */,
+				6383D48A1CD1671300B53BCE /* CartViewController.m */,
 				630FCF801CCFF50E0036BEE2 /* AmazonProductsAPI.h */,
 				630FCF811CCFF50E0036BEE2 /* AmazonProductsAPI.m */,
 				63373F051CCFDF0500DB0A2E /* Main.storyboard */,
@@ -307,11 +317,13 @@
 				63373EFE1CCFDF0500DB0A2E /* AppDelegate.m in Sources */,
 				630FCF821CCFF50E0036BEE2 /* AmazonProductsAPI.m in Sources */,
 				6383D47D1CD07DEF00B53BCE /* AmazonProduct.m in Sources */,
+				6383D48B1CD1671300B53BCE /* CartViewController.m in Sources */,
 				6383D4761CD06ECD00B53BCE /* Model.xcdatamodeld in Sources */,
 				63373F011CCFDF0500DB0A2E /* ProductListViewController.m in Sources */,
 				63373EFB1CCFDF0500DB0A2E /* main.m in Sources */,
 				6383D4731CD01F0C00B53BCE /* RWMAmazonProductAdvertisingRequestSerializer.m in Sources */,
 				6383D4721CD01F0C00B53BCE /* RWMAmazonProductAdvertisingManager.m in Sources */,
+				6383D4881CD1527300B53BCE /* AmazonProductViewController.m in Sources */,
 				6383D47C1CD07DEF00B53BCE /* AmazonProduct+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

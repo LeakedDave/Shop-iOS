@@ -88,7 +88,7 @@
         <!--Product-->
         <scene sceneID="YNR-fE-xGC">
             <objects>
-                <viewController id="bic-uS-Key" sceneMemberID="viewController">
+                <viewController id="bic-uS-Key" customClass="AmazonProductViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eoM-XW-7AN"/>
                         <viewControllerLayoutGuide type="bottom" id="B1h-TI-MKX"/>
@@ -102,7 +102,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="Trs-T6-aXK"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Add to Cart" backgroundImage="green.png"/>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9o-SD-LWh">
@@ -123,6 +123,10 @@
                     <navigationItem key="navigationItem" title="Product" id="jgR-yw-kU3">
                         <barButtonItem key="backBarButtonItem" title=" " id="wZB-2Q-66W"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addToCartBtn" destination="diO-LN-ffx" id="K0O-nm-Dzj"/>
+                        <outlet property="productScrollView" destination="T9o-SD-LWh" id="Sre-qt-kKr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iqc-Xr-qC6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -138,7 +142,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
                                 <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -198,7 +201,7 @@
         <!--Cart-->
         <scene sceneID="5Kq-Is-0l9">
             <objects>
-                <viewController id="Ne6-q9-A4R" sceneMemberID="viewController">
+                <viewController id="Ne6-q9-A4R" customClass="CartViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tg8-Bw-mjH"/>
                         <viewControllerLayoutGuide type="bottom" id="jjp-Yo-JBB"/>
@@ -207,12 +210,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cart is empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNL-M4-eKk">
+                                <rect key="frame" x="220" y="264" width="160" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="HCL-RE-2Ls"/>
+                                    <constraint firstAttribute="height" constant="72" id="uhU-gY-Ea8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsq-Rj-KVR">
                                 <rect key="frame" x="0.0" y="495" width="600" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="LoH-93-5co"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Empty Cart" backgroundImage="red.png"/>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f2e-dh-iMd">
@@ -222,6 +235,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ZNL-M4-eKk" firstAttribute="centerX" secondItem="j02-P5-1pa" secondAttribute="centerX" id="1gS-YO-bjs"/>
                             <constraint firstItem="f2e-dh-iMd" firstAttribute="top" secondItem="tg8-Bw-mjH" secondAttribute="bottom" id="JLM-QY-3PD"/>
                             <constraint firstItem="f2e-dh-iMd" firstAttribute="leading" secondItem="j02-P5-1pa" secondAttribute="leading" id="K58-a1-Xk8"/>
                             <constraint firstAttribute="trailing" secondItem="f2e-dh-iMd" secondAttribute="trailing" id="SCh-Ou-UJA"/>
@@ -229,11 +243,15 @@
                             <constraint firstItem="jjp-Yo-JBB" firstAttribute="top" secondItem="Hsq-Rj-KVR" secondAttribute="bottom" id="YSr-hk-d0V"/>
                             <constraint firstItem="Hsq-Rj-KVR" firstAttribute="leading" secondItem="j02-P5-1pa" secondAttribute="leading" id="bUv-3N-xFa"/>
                             <constraint firstItem="Hsq-Rj-KVR" firstAttribute="top" secondItem="f2e-dh-iMd" secondAttribute="bottom" id="kBk-Cv-UzU"/>
+                            <constraint firstItem="ZNL-M4-eKk" firstAttribute="centerY" secondItem="j02-P5-1pa" secondAttribute="centerY" id="mfn-Fb-zsp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Cart" id="FHA-V3-i2G"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cartTableView" destination="f2e-dh-iMd" id="wUe-xq-dc5"/>
+                        <outlet property="emptyCartBtn" destination="Hsq-Rj-KVR" id="haz-Ig-PwA"/>
+                        <outlet property="fallbackLabel" destination="ZNL-M4-eKk" id="lgu-1K-KRw"/>
                         <segue destination="bic-uS-Key" kind="show" identifier="ProductSegue" id="Xrd-EL-WWc"/>
                     </connections>
                 </viewController>
@@ -312,6 +330,6 @@
         <image name="red.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gum-G3-iQd"/>
+        <segue reference="Xrd-EL-WWc"/>
     </inferredMetricsTieBreakers>
 </document>
