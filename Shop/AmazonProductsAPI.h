@@ -22,6 +22,6 @@
 
 + (AmazonProductsAPI *)sharedInstance;
 - (void)fetchAllProducts;
-
+- (void)searchProducts:(NSString *)q;
 
 @end
