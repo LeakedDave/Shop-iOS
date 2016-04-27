@@ -84,12 +84,13 @@ NSString * const RWMAmazonProductAdvertisingManagerErrorDomain = @"RWMAmazonProd
     [self enqueueRequestOperationWithMethod:@"GET" parameters:[parameters copy] success:success failure:failure];
 }
 
-- (void)enqueueRequestOperationWithMethod:(NSString *)method
+- (AFHTTPRequestOperation *)enqueueRequestOperationWithMethod:(NSString *)method
                                  parameters:(NSDictionary *)parameters
                                     success:(void (^)(id responseObject))success
                                     failure:(void (^)(NSError *error))failure
 {
     NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:method URLString:[self.baseURL absoluteString] parameters:parameters error:nil];
+    
     AFHTTPRequestOperation *requestOperation = [self HTTPRequestOperationWithRequest:request success:^(__unused AFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             success(responseObject);
@@ -99,8 +100,10 @@ NSString * const RWMAmazonProductAdvertisingManagerErrorDomain = @"RWMAmazonProd
             failure(error);
         }
     }];
-	
+
     [self.operationQueue addOperation:requestOperation];
+    
+    return requestOperation;
 }
 
 @end

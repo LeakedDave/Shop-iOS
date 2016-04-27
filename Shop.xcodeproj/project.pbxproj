@@ -22,6 +22,8 @@
 		6383D4721CD01F0C00B53BCE /* RWMAmazonProductAdvertisingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383D46F1CD01F0C00B53BCE /* RWMAmazonProductAdvertisingManager.m */; };
 		6383D4731CD01F0C00B53BCE /* RWMAmazonProductAdvertisingRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383D4711CD01F0C00B53BCE /* RWMAmazonProductAdvertisingRequestSerializer.m */; };
 		6383D4761CD06ECD00B53BCE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6383D4741CD06ECD00B53BCE /* Model.xcdatamodeld */; };
+		6383D47C1CD07DEF00B53BCE /* AmazonProduct+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383D4791CD07DEF00B53BCE /* AmazonProduct+CoreDataProperties.m */; };
+		6383D47D1CD07DEF00B53BCE /* AmazonProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383D47B1CD07DEF00B53BCE /* AmazonProduct.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,10 @@
 		6383D4711CD01F0C00B53BCE /* RWMAmazonProductAdvertisingRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWMAmazonProductAdvertisingRequestSerializer.m; sourceTree = "<group>"; };
 		6383D4751CD06ECD00B53BCE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		6383D4771CD07BEC00B53BCE /* Shop-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Shop-Prefix.pch"; sourceTree = "<group>"; };
+		6383D4781CD07DEF00B53BCE /* AmazonProduct+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AmazonProduct+CoreDataProperties.h"; sourceTree = "<group>"; };
+		6383D4791CD07DEF00B53BCE /* AmazonProduct+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AmazonProduct+CoreDataProperties.m"; sourceTree = "<group>"; };
+		6383D47A1CD07DEF00B53BCE /* AmazonProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonProduct.h; sourceTree = "<group>"; };
+		6383D47B1CD07DEF00B53BCE /* AmazonProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonProduct.m; sourceTree = "<group>"; };
 		7D0B936EDA3888460D411DD8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D2693709FF7E802B9FE9EBB9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -111,6 +117,10 @@
 				630FCF811CCFF50E0036BEE2 /* AmazonProductsAPI.m */,
 				6383D4741CD06ECD00B53BCE /* Model.xcdatamodeld */,
 				6383D4771CD07BEC00B53BCE /* Shop-Prefix.pch */,
+				6383D4781CD07DEF00B53BCE /* AmazonProduct+CoreDataProperties.h */,
+				6383D4791CD07DEF00B53BCE /* AmazonProduct+CoreDataProperties.m */,
+				6383D47A1CD07DEF00B53BCE /* AmazonProduct.h */,
+				6383D47B1CD07DEF00B53BCE /* AmazonProduct.m */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -280,11 +290,13 @@
 				63373F041CCFDF0500DB0A2E /* CategoriesViewController.m in Sources */,
 				63373EFE1CCFDF0500DB0A2E /* AppDelegate.m in Sources */,
 				630FCF821CCFF50E0036BEE2 /* AmazonProductsAPI.m in Sources */,
+				6383D47D1CD07DEF00B53BCE /* AmazonProduct.m in Sources */,
 				6383D4761CD06ECD00B53BCE /* Model.xcdatamodeld in Sources */,
 				63373F011CCFDF0500DB0A2E /* HomeViewController.m in Sources */,
 				63373EFB1CCFDF0500DB0A2E /* main.m in Sources */,
 				6383D4731CD01F0C00B53BCE /* RWMAmazonProductAdvertisingRequestSerializer.m in Sources */,
 				6383D4721CD01F0C00B53BCE /* RWMAmazonProductAdvertisingManager.m in Sources */,
+				6383D47C1CD07DEF00B53BCE /* AmazonProduct+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

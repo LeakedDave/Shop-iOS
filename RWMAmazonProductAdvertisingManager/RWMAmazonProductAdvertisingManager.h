@@ -46,7 +46,7 @@ typedef NS_ENUM(NSInteger, RWMAmazonProductAdvertisingISBN){
                             success:(void (^)(id responseObject))success
                             failure:(void (^)(NSError *error))failure;
 
-- (void)enqueueRequestOperationWithMethod:(NSString *)method
+- (AFHTTPRequestOperation *)enqueueRequestOperationWithMethod:(NSString *)method
                                  parameters:(NSDictionary *)parameters
                                     success:(void (^)(id responseObject))success
                                     failure:(void (^)(NSError *error))failure;

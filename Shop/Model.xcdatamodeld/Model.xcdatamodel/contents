@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
-    <entity name="AmazonProduct" syncable="YES">
+    <entity name="AmazonProduct" representedClassName="AmazonProduct" syncable="YES">
+        <attribute name="asin" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="in_cart" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="isbn" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="large_image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="medium_image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>

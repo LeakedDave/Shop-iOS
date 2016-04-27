@@ -22,6 +22,8 @@ static NSString *URI = @"/onca/xml";
 @implementation AmazonProductsAPI
 
 
+static AFHTTPRequestOperation *currentOperation = nil;
+
 /**
  Get the shared Instance of the AmazonProductsAPI
  @return AmazonProductsAPI instance
@@ -48,15 +50,85 @@ static NSString *URI = @"/onca/xml";
     [self requestWithParams:requestParams];
 }
 
+/**
+ Request products from Amazon
+ @param requestParams NSDictionary of Amazon response
+ @return NSArray contains Amazon products data
+ */
+- (NSArray *)parseResponse:(NSDictionary *)responseDict {
+    NSMutableArray *responseArray = [[NSMutableArray alloc] init];
+    
+    if ([responseDict objectForKey:@"Items"] && [[responseDict objectForKey:@"Items"] objectForKey:@"Item"]) {
+        NSArray *items = [[responseDict objectForKey:@"Items"] objectForKey:@"Item"];
+        
+        for (NSDictionary *item in items) {
+            // Skip entries that are missing important attributes
+            if (![item objectForKey:@"ASIN"]) {
+                continue;
+            }
+            
+            if (![item objectForKey:@"ItemAttributes"]) {
+                continue;
+            }
+            
+            NSDictionary *itemAttributes = [item objectForKey:@"ItemAttributes"];
+            
+            if (![itemAttributes objectForKey:@"Title"]) {
+                continue;
+            }
+            
+            if (![itemAttributes objectForKey:@"Brand"]) {
+                continue;
+            }
+            
+            
+            // Make sure there is a lowest new price
+            if (![item objectForKey:@"OfferSummary"] || ![[item objectForKey:@"OfferSummary"] objectForKey:@"LowestNewPrice"] || ![[[item objectForKey:@"OfferSummary"] objectForKey:@"LowestNewPrice"] objectForKey:@"FormattedPrice"]) {
+                continue;
+            }
+            
+            
+            // Setup Amazon product Dictionary
+            NSMutableDictionary *amazonProduct = [[NSMutableDictionary alloc] init];
+            amazonProduct[@"asin"] = [NSNumber numberWithInt:[[item objectForKey:@"ASIN"] intValue]];
+            amazonProduct[@"title"] = [itemAttributes objectForKey:@"Title"];
+            amazonProduct[@"price"] = [[[item objectForKey:@"OfferSummary"] objectForKey:@"LowestNewPrice"] objectForKey:@"FormattedPrice"];
+            
+            
+            // Store any available image sizes
+            if ([item objectForKey:@"SmallImage"]) {
+                amazonProduct[@"small_image"] = [[item objectForKey:@"SmallImage"] objectForKey:@"URL"];
+            }
+            
+            if ([item objectForKey:@"MediumImage"]) {
+                amazonProduct[@"medium_image"] = [[item objectForKey:@"MediumImage"] objectForKey:@"URL"];
+            }
+            
+            if ([item objectForKey:@"LargeImage"]) {
+                amazonProduct[@"large_image"] = [[item objectForKey:@"LargeImage"] objectForKey:@"URL"];
+            }
+            
+            
+            [responseArray addObject:amazonProduct];
+        }
+        
+    }
+    
+    return responseArray;
+}
 
 /**
- Generates a signature using the AWS Key for the request
- @param input NSString to sign
- @return NSString signature
+ Request products from Amazon
+ @param requestParams NSDictionary with additional parameters
  */
 - (void)requestWithParams:(NSDictionary *)requestParams {
+    // Cancel current operation
+    if (currentOperation != nil) {
+        [currentOperation cancel];
+    }
+    
     // Prepare parameters
-       NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     params[@"Service"] = @"AWSECommerceService";
     params[@"Operation"] = @"ItemSearch";
     params[@"AssociateTag"] = ASSOCIATE_TAG;
@@ -70,13 +142,14 @@ static NSString *URI = @"/onca/xml";
     RWMAmazonProductAdvertisingManager *manager = [[RWMAmazonProductAdvertisingManager alloc] initWithAccessKeyID:AWS_ACCESS_KEY secret:AWS_SECRET_KEY];
     manager.responseSerializer = [AFXMLParserResponseSerializer serializer];
     
-    [manager enqueueRequestOperationWithMethod:@"GET" parameters:[params copy] success:^(id responseObject) {
+    currentOperation = [manager enqueueRequestOperationWithMethod:@"GET" parameters:[params copy] success:^(id responseObject) {
         // Parse the XML Response into a Dictionary
         NSDictionary *responseDict = [[[XMLDictionaryParser alloc] init] dictionaryWithParser:responseObject];
-        NSError * err;
-        NSData * jsonData = [NSJSONSerialization  dataWithJSONObject:responseDict options:0 error:&err];
-        NSString * myString = [[NSString alloc] initWithData:jsonData   encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",myString);
+        
+        // Parse the response Dictionary into a more simplified Dictionary
+        NSArray *amazonProducts = [self parseResponse:responseDict];
+        
+        // TODO notify delegate
     } failure:^(NSError *error) {
         NSLog(@"%@",[error localizedDescription]);
     }];
