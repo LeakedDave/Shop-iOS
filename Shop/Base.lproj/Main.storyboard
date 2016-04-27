@@ -8,7 +8,7 @@
         <!--Shop-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="ProductListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -73,7 +73,9 @@
                             <constraint firstAttribute="trailing" secondItem="khg-MK-kaJ" secondAttribute="trailing" id="vPv-YX-nKq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Categories" id="s9g-Xz-gwy"/>
+                    <navigationItem key="navigationItem" title="Categories" id="s9g-Xz-gwy">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Ji3-aL-LFN"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="categoriesTableView" destination="khg-MK-kaJ" id="JDu-Sv-eV8"/>
                         <segue destination="2S2-7F-VZ8" kind="show" identifier="CategorySegue" id="g1o-tU-dTA"/>
@@ -135,6 +137,13 @@
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="eSX-dG-Q7F" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
@@ -155,6 +164,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bak-DC-XHz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -174,6 +184,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kda-08-onw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -252,7 +263,7 @@
         <!--Category-->
         <scene sceneID="Bis-NW-2kG">
             <objects>
-                <viewController id="2S2-7F-VZ8" userLabel="Category" sceneMemberID="viewController">
+                <viewController id="2S2-7F-VZ8" userLabel="Category" customClass="ProductListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Tg-Tu-Mhd"/>
                         <viewControllerLayoutGuide type="bottom" id="dkz-hd-Yvn"/>
@@ -283,14 +294,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Category" id="zot-FU-el5"/>
                     <connections>
-                        <outlet property="productsTableView" destination="YpZ-xs-cbl" id="rMG-Ru-QTz"/>
-                        <outlet property="searchBar" destination="r6q-Y0-m6M" id="xUF-HT-drq"/>
+                        <outlet property="productsTableView" destination="YpZ-xs-cbl" id="gxU-A4-vi0"/>
+                        <outlet property="searchBar" destination="r6q-Y0-m6M" id="Umn-S0-IKI"/>
                         <segue destination="bic-uS-Key" kind="show" identifier="ProductSegue" id="Gum-G3-iQd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eAn-sZ-ahd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2209" y="360"/>
+            <point key="canvasLocation" x="2244" y="360"/>
         </scene>
     </scenes>
     <resources>

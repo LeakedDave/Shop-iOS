@@ -1,22 +1,26 @@
 //
-//  HomeViewController.m
+//  ProductListViewController.m
 //  Shop
 //
 //  Created by David Anderson on 4/26/16.
 //  Copyright © 2016 David Anderson. All rights reserved.
 //
 
-#import "HomeViewController.h"
+#import "ProductListViewController.h"
 
-@implementation HomeViewController
+@implementation ProductListViewController
 
-@synthesize searchBar, productsTableView, tableData;
+@synthesize searchBar, productsTableView, tableData, searchIndex;
 
 /**
  Prepare the ViewController and fetch initial Amazon products
  */
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (searchIndex == nil) {
+        searchIndex = @"All";
+    }
+    
     tableData = [[NSArray alloc] init];
     
     // Set delegates
@@ -26,7 +30,7 @@
     
     // Fetch Amazon products
     [[AmazonProductsAPI sharedInstance] setDelegate:self];
-    [[AmazonProductsAPI sharedInstance] fetchAllProducts];
+    [[AmazonProductsAPI sharedInstance] fetchAllProductsWithSearchIndex:searchIndex];
 
     
     // Dismiss keyboard on tap
@@ -54,9 +58,9 @@
  */
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length == 0) {
-        [[AmazonProductsAPI sharedInstance] fetchAllProducts];
+        [[AmazonProductsAPI sharedInstance] fetchAllProductsWithSearchIndex:searchIndex];
     } else {
-        [[AmazonProductsAPI sharedInstance] searchProducts:searchText];
+        [[AmazonProductsAPI sharedInstance] searchProducts:searchText withSearchIndex:searchIndex];
     }
 }
 

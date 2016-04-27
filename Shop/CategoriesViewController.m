@@ -7,12 +7,11 @@
 //
 
 #import "CategoriesViewController.h"
+#import "ProductListViewController.h"
 
 @implementation CategoriesViewController
 
-@synthesize categoriesTableView;
-
-NSArray *tableData;
+@synthesize categoriesTableView, selectedIndex, tableData;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -64,8 +63,15 @@ NSArray *tableData;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    selectedIndex = (int) indexPath.row;
     
-    // TODO go to category controller
+    // Go to Category controller
+    [self performSegueWithIdentifier:@"CategorySegue" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    ProductListViewController *viewController = segue.destinationViewController;
+    [viewController setSearchIndex:[tableData objectAtIndex:selectedIndex]];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -21,7 +21,7 @@
 @property (nonatomic, strong) AFHTTPRequestOperation *currentOperation;
 
 + (AmazonProductsAPI *)sharedInstance;
-- (void)fetchAllProducts;
-- (void)searchProducts:(NSString *)q;
+- (void)fetchAllProductsWithSearchIndex:(NSString *)searchIndex;
+- (void)searchProducts:(NSString *)q withSearchIndex:(NSString *)searchIndex;
 
 @end

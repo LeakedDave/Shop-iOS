@@ -36,14 +36,16 @@ static NSString *URI = @"/onca/xml";
 }
 
 
-- (void)fetchAllProducts {
-    NSDictionary *requestParams = @{@"Keywords":@"Featured"};
+- (void)fetchAllProductsWithSearchIndex:(NSString *)searchIndex {
+    searchIndex = [searchIndex stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSDictionary *requestParams = @{@"Keywords":@"Featured", @"SearchIndex":searchIndex};
     
     [self requestWithParams:requestParams];
 }
 
-- (void)searchProducts:(NSString *)q {
-    NSDictionary *requestParams = @{@"Keywords":q};
+- (void)searchProducts:(NSString *)q withSearchIndex:(NSString *)searchIndex {
+    searchIndex = [searchIndex stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSDictionary *requestParams = @{@"Keywords":q, @"SearchIndex":searchIndex};
     
     [self requestWithParams:requestParams];
 }

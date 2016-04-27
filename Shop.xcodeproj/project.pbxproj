@@ -11,7 +11,7 @@
 		630FCF821CCFF50E0036BEE2 /* AmazonProductsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 630FCF811CCFF50E0036BEE2 /* AmazonProductsAPI.m */; };
 		63373EFB1CCFDF0500DB0A2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63373EFA1CCFDF0500DB0A2E /* main.m */; };
 		63373EFE1CCFDF0500DB0A2E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63373EFD1CCFDF0500DB0A2E /* AppDelegate.m */; };
-		63373F011CCFDF0500DB0A2E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63373F001CCFDF0500DB0A2E /* HomeViewController.m */; };
+		63373F011CCFDF0500DB0A2E /* ProductListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63373F001CCFDF0500DB0A2E /* ProductListViewController.m */; };
 		63373F041CCFDF0500DB0A2E /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63373F031CCFDF0500DB0A2E /* CategoriesViewController.m */; };
 		63373F071CCFDF0500DB0A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63373F051CCFDF0500DB0A2E /* Main.storyboard */; };
 		63373F091CCFDF0500DB0A2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63373F081CCFDF0500DB0A2E /* Assets.xcassets */; };
@@ -38,8 +38,8 @@
 		63373EFA1CCFDF0500DB0A2E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		63373EFC1CCFDF0500DB0A2E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		63373EFD1CCFDF0500DB0A2E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		63373EFF1CCFDF0500DB0A2E /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		63373F001CCFDF0500DB0A2E /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		63373EFF1CCFDF0500DB0A2E /* ProductListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductListViewController.h; sourceTree = "<group>"; };
+		63373F001CCFDF0500DB0A2E /* ProductListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductListViewController.m; sourceTree = "<group>"; };
 		63373F021CCFDF0500DB0A2E /* CategoriesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoriesViewController.h; sourceTree = "<group>"; };
 		63373F031CCFDF0500DB0A2E /* CategoriesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
 		63373F061CCFDF0500DB0A2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -114,8 +114,8 @@
 				63373EF91CCFDF0500DB0A2E /* Supporting Files */,
 				63373EFC1CCFDF0500DB0A2E /* AppDelegate.h */,
 				63373EFD1CCFDF0500DB0A2E /* AppDelegate.m */,
-				63373EFF1CCFDF0500DB0A2E /* HomeViewController.h */,
-				63373F001CCFDF0500DB0A2E /* HomeViewController.m */,
+				63373EFF1CCFDF0500DB0A2E /* ProductListViewController.h */,
+				63373F001CCFDF0500DB0A2E /* ProductListViewController.m */,
 				63373F021CCFDF0500DB0A2E /* CategoriesViewController.h */,
 				63373F031CCFDF0500DB0A2E /* CategoriesViewController.m */,
 				630FCF801CCFF50E0036BEE2 /* AmazonProductsAPI.h */,
@@ -308,7 +308,7 @@
 				630FCF821CCFF50E0036BEE2 /* AmazonProductsAPI.m in Sources */,
 				6383D47D1CD07DEF00B53BCE /* AmazonProduct.m in Sources */,
 				6383D4761CD06ECD00B53BCE /* Model.xcdatamodeld in Sources */,
-				63373F011CCFDF0500DB0A2E /* HomeViewController.m in Sources */,
+				63373F011CCFDF0500DB0A2E /* ProductListViewController.m in Sources */,
 				63373EFB1CCFDF0500DB0A2E /* main.m in Sources */,
 				6383D4731CD01F0C00B53BCE /* RWMAmazonProductAdvertisingRequestSerializer.m in Sources */,
 				6383D4721CD01F0C00B53BCE /* RWMAmazonProductAdvertisingManager.m in Sources */,

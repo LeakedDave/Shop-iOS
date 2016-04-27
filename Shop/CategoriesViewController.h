@@ -11,6 +11,8 @@
 @interface CategoriesViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *categoriesTableView;
+@property (strong, nonatomic) NSArray *tableData;
+@property (nonatomic) int selectedIndex;
 
 @end
 
