@@ -21,7 +21,6 @@ static NSString *URI = @"/onca/xml";
 
 @implementation AmazonProductsAPI
 
-
 static AFHTTPRequestOperation *currentOperation = nil;
 
 /**

@@ -24,6 +24,7 @@
 		6383D4761CD06ECD00B53BCE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6383D4741CD06ECD00B53BCE /* Model.xcdatamodeld */; };
 		6383D47C1CD07DEF00B53BCE /* AmazonProduct+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383D4791CD07DEF00B53BCE /* AmazonProduct+CoreDataProperties.m */; };
 		6383D47D1CD07DEF00B53BCE /* AmazonProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 6383D47B1CD07DEF00B53BCE /* AmazonProduct.m */; };
+		6383D47F1CD08D1B00B53BCE /* AmazonProductTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6383D47E1CD08D1B00B53BCE /* AmazonProductTableCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		6383D4791CD07DEF00B53BCE /* AmazonProduct+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AmazonProduct+CoreDataProperties.m"; sourceTree = "<group>"; };
 		6383D47A1CD07DEF00B53BCE /* AmazonProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonProduct.h; sourceTree = "<group>"; };
 		6383D47B1CD07DEF00B53BCE /* AmazonProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonProduct.m; sourceTree = "<group>"; };
+		6383D47E1CD08D1B00B53BCE /* AmazonProductTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AmazonProductTableCell.xib; sourceTree = "<group>"; };
 		7D0B936EDA3888460D411DD8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D2693709FF7E802B9FE9EBB9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -101,22 +103,22 @@
 		63373EF81CCFDF0500DB0A2E /* Shop */ = {
 			isa = PBXGroup;
 			children = (
+				63373F081CCFDF0500DB0A2E /* Assets.xcassets */,
 				63373F131CCFE14800DB0A2E /* Images */,
+				63373EF91CCFDF0500DB0A2E /* Supporting Files */,
 				63373EFC1CCFDF0500DB0A2E /* AppDelegate.h */,
 				63373EFD1CCFDF0500DB0A2E /* AppDelegate.m */,
 				63373EFF1CCFDF0500DB0A2E /* HomeViewController.h */,
 				63373F001CCFDF0500DB0A2E /* HomeViewController.m */,
 				63373F021CCFDF0500DB0A2E /* CategoriesViewController.h */,
 				63373F031CCFDF0500DB0A2E /* CategoriesViewController.m */,
-				63373F051CCFDF0500DB0A2E /* Main.storyboard */,
-				63373F081CCFDF0500DB0A2E /* Assets.xcassets */,
-				63373F0A1CCFDF0500DB0A2E /* LaunchScreen.storyboard */,
-				63373F0D1CCFDF0500DB0A2E /* Info.plist */,
-				63373EF91CCFDF0500DB0A2E /* Supporting Files */,
 				630FCF801CCFF50E0036BEE2 /* AmazonProductsAPI.h */,
 				630FCF811CCFF50E0036BEE2 /* AmazonProductsAPI.m */,
+				63373F051CCFDF0500DB0A2E /* Main.storyboard */,
+				63373F0A1CCFDF0500DB0A2E /* LaunchScreen.storyboard */,
+				6383D47E1CD08D1B00B53BCE /* AmazonProductTableCell.xib */,
+				63373F0D1CCFDF0500DB0A2E /* Info.plist */,
 				6383D4741CD06ECD00B53BCE /* Model.xcdatamodeld */,
-				6383D4771CD07BEC00B53BCE /* Shop-Prefix.pch */,
 				6383D4781CD07DEF00B53BCE /* AmazonProduct+CoreDataProperties.h */,
 				6383D4791CD07DEF00B53BCE /* AmazonProduct+CoreDataProperties.m */,
 				6383D47A1CD07DEF00B53BCE /* AmazonProduct.h */,
@@ -128,6 +130,7 @@
 		63373EF91CCFDF0500DB0A2E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6383D4771CD07BEC00B53BCE /* Shop-Prefix.pch */,
 				63373EFA1CCFDF0500DB0A2E /* main.m */,
 			);
 			name = "Supporting Files";
@@ -229,6 +232,7 @@
 				63373F091CCFDF0500DB0A2E /* Assets.xcassets in Resources */,
 				63373F071CCFDF0500DB0A2E /* Main.storyboard in Resources */,
 				63373F171CCFE34B00DB0A2E /* lists@3x.png in Resources */,
+				6383D47F1CD08D1B00B53BCE /* AmazonProductTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

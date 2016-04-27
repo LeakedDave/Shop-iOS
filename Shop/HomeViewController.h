@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UITableView *productsTableView;
 
 @end
 
